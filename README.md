@@ -44,3 +44,27 @@ Plugin is often useful when used with the TurtlePHP
     require_once APP . '/includes/setup/roles.inc.php';
     $role = \Plugin\Roles::retrieve();
 
+### Example Config and Role Usage
+
+    /**
+     * Config
+     */
+    require_once APP . '/plugins/Config.class.php';
+    require_once APP . '/includes/setup/config.inc.php';
+    $config = \Plugin\Config::retrieve();
+
+    /**
+     * Roles
+     */
+    require_once APP . '/plugins/Roles.class.php';
+    require_once APP . '/includes/setup/roles.inc.php';
+    $role = \Plugin\Roles::retrieve();
+
+    /**
+     * Runtime INI Settings
+     */
+    $runtime = $config['runtime'][$role];
+    foreach ($runtime as $key => $value) {
+        ini_set($key, $value);
+    }
+
