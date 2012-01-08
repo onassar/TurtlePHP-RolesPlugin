@@ -14,6 +14,8 @@ Plugin is often useful when used with the TurtlePHP
 
 ### Example Role Storage
 ``` php
+<?php
+
     /**
      * Defines a unique property used to distinguish the running environment.
      * Accesses the <$_SERVER> array to define role, and as a result, the order
@@ -38,6 +40,8 @@ Plugin is often useful when used with the TurtlePHP
 
 ### Example Role Retrieval
 ``` php
+<?php
+
     /**
      * Roles
      */
@@ -48,6 +52,8 @@ Plugin is often useful when used with the TurtlePHP
 
 ### Example Config and Role Usage
 ``` php
+<?php
+
     /**
      * Config
      */
