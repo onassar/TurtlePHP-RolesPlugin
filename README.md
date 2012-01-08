@@ -34,6 +34,7 @@ Plugin is often useful when used with the TurtlePHP
 
     // store in singleton
     \Plugin\Roles::store($roles);
+```
 
 ### Example Role Retrieval
 ``` php
@@ -43,6 +44,7 @@ Plugin is often useful when used with the TurtlePHP
     require_once APP . '/plugins/Roles.class.php';
     require_once APP . '/includes/setup/roles.inc.php';
     $role = \Plugin\Roles::retrieve();
+```
 
 ### Example Config and Role Usage
 ``` php
@@ -67,3 +69,4 @@ Plugin is often useful when used with the TurtlePHP
     foreach ($runtime as $key => $value) {
         ini_set($key, $value);
     }
+```
