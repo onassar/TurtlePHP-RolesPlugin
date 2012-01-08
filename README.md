@@ -24,7 +24,7 @@ different codebase environments (eg. local, development, staging, production).
             )
         );
     
-        // store in core for automated propagating
+        // store in singleton
         \Plugin\Roles::store($roles);
 
 ### Example Role Retrieval
