@@ -8,7 +8,9 @@ array) to the defined value (second position in array). When found, the
 role (third position in array) is set, and returned through the
 <retrieve> method.
 
-If no role could be found matching, an <Exception> is thrown.
+If no role could be found matching, an <Exception> is thrown.  
+Plugin is often useful when used with the TurtlePHP
+[Config](https://github.com/onassar/TurtlePHP-ConfigPlugin) plugin.
 
 ### Example Role Storage
     <?php
