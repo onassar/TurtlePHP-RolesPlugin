@@ -13,30 +13,30 @@ Plugin is often useful when used with the TurtlePHP
 [Config](https://github.com/onassar/TurtlePHP-ConfigPlugin) plugin.
 
 ### Example Role Storage
-    <?php
-    
-        /**
-         * Defines a unique property used to distinguish the running environment.
-         * Accesses the <$_SERVER> array to define role, and as a result, the order
-         * here matters.
-         */
-        $roles = array(
-            array(
-                'HTTP_HOST',
-                'local.turtlephp.com',
-                'onassar'
-            ),
-            array(
-                'HTTP_HOST',
-                'turtlephp.com',
-                'production'
-            )
-        );
-    
-        // store in singleton
-        \Plugin\Roles::store($roles);
+``` php
+    /**
+     * Defines a unique property used to distinguish the running environment.
+     * Accesses the <$_SERVER> array to define role, and as a result, the order
+     * here matters.
+     */
+    $roles = array(
+        array(
+            'HTTP_HOST',
+            'local.turtlephp.com',
+            'onassar'
+        ),
+        array(
+            'HTTP_HOST',
+            'turtlephp.com',
+            'production'
+        )
+    );
+
+    // store in singleton
+    \Plugin\Roles::store($roles);
 
 ### Example Role Retrieval
+``` php
     /**
      * Roles
      */
@@ -45,7 +45,7 @@ Plugin is often useful when used with the TurtlePHP
     $role = \Plugin\Roles::retrieve();
 
 ### Example Config and Role Usage
-
+``` php
     /**
      * Config
      */
@@ -67,4 +67,3 @@ Plugin is often useful when used with the TurtlePHP
     foreach ($runtime as $key => $value) {
         ini_set($key, $value);
     }
-
