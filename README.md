@@ -1,7 +1,8 @@
 TurtlePHP Roles Plugin
 ===
-TurtlePHP Roles Plugin provides a standardized way to differentiate between
-different codebase environments (eg. local, development, staging, production).
+[TurtlePHP](https://github.com/onassar/TurtlePHP) Roles Plugin provides a
+standardized way to differentiate between different codebase environments (eg.
+local, development, staging, production).
 
 Matches a role by comparing the defined <_SERVER> key (first position in
 array) to the defined value (second position in array). When found, the
