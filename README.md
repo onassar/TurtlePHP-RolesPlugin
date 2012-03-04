@@ -47,7 +47,7 @@ Plugin is often useful when used with the TurtlePHP
     /**
      * Roles
      */
-    require_once APP . '/plugins/Roles.class.php';
+    require_once APP . '/plugins/TurtlePHP-RolesPlugin/Roles.class.php';
     require_once APP . '/includes/setup/roles.inc.php';
     $role = \Plugin\Roles::retrieve();
 
@@ -60,14 +60,14 @@ Plugin is often useful when used with the TurtlePHP
     /**
      * Config
      */
-    require_once APP . '/plugins/Config.class.php';
+    require_once APP . '/plugins/TurtlePHP-ConfigPlugin/Config.class.php';
     require_once APP . '/includes/setup/config.inc.php';
     $config = \Plugin\Config::retrieve();
 
     /**
      * Roles
      */
-    require_once APP . '/plugins/Roles.class.php';
+    require_once APP . '/plugins/TurtlePHP-RolesPlugin/Roles.class.php';
     require_once APP . '/includes/setup/roles.inc.php';
     $role = \Plugin\Roles::retrieve();
 
