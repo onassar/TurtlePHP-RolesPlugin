@@ -41,7 +41,7 @@
         protected static $_roles;
 
         /**
-         * getRole
+         * retrieve
          * 
          * @access public
          * @static
