@@ -3,6 +3,14 @@
     // namespace
     namespace Plugin;
 
+    // dependency check
+    if (class_exists('\\Plugin\\Config') === false) {
+        throw new \Exception(
+            '*Config* class required. Please see ' .
+            'https://github.com/onassar/TurtlePHP-ConfigPlugin'
+        );
+    }
+
     /**
      * Roles
      * 
@@ -10,18 +18,29 @@
      * between different codebase environments (eg. local, development, staging,
      * production).
      * 
-     * Matches a role by comparing the defined <_SERVER> key (first position in
-     * array) to the defined value (second position in array). When found, the
-     * role (third position in array) is set, and returned through the
-     * <retrieve> method.
-     * 
-     * If no role could be found matching, an <Exception> is thrown.
-     * 
      * @author   Oliver Nassar <onassar@gmail.com>
      * @abstract
      */
     abstract class Roles
     {
+        /**
+         * _configPath
+         *
+         * @var    string
+         * @access protected
+         * @static
+         */
+        protected static $_configPath = 'config.default.inc.php';
+
+        /**
+         * _initiated
+         *
+         * @var    boolean
+         * @access protected
+         * @static
+         */
+        protected static $_initiated = false;
+
         /**
          * _role
          * 
@@ -41,6 +60,24 @@
         protected static $_roles;
 
         /**
+         * init
+         * 
+         * @access public
+         * @static
+         * @return void
+         */
+        public static function init()
+        {
+            if (is_null(self::$_initiated) === false) {
+                self::$_initiated = true;
+                require_once self::$_configPath;
+                $config = \Plugin\Config::retrieve();
+                $config = $config['TurtlePHP-RolesPlugin'];
+                self::$_role = $config['role'];
+            }
+        }
+
+        /**
          * retrieve
          * 
          * @access public
@@ -49,45 +86,29 @@
          */
         public static function retrieve()
         {
-            // role check
-            if (isset(self::$_role)) {
-                return self::$_role;
-            }
-
-            // grab/store role
-            foreach (self::$_roles as $details) {
-                list($key, $value, $type) = $details;
-                if (isset($_SERVER[$key]) && $_SERVER[$key] === $value) {
-                    $role = $type;
-                    break;
-                }
-            }
-
-            // role found
-            if (isset($role)) {
-                self::$_role = $role;
-                return $role;
-            }
-
-            // valid role couldn't be found
-            throw new \Exception(
-                'Application role couldn\'t be found.'
-            );
+            return self::$_role;
         }
 
         /**
-         * store
-         * 
-         * Sets the possible roles for the application environments.
+         * setConfigPath
          * 
          * @access public
-         * @static
-         * @param  array $roles
+         * @param  string $path
          * @return void
          */
-        public static function store(array $roles)
+        public static function setConfigPath($path)
         {
-            self::$_roles = $roles;
+            self::$_configPath = $path;
         }
     }
 
+    // Config
+    $info = pathinfo(__DIR__);
+    $parent = ($info['dirname']) . '/' . ($info['basename']);
+    $configPath = ($parent) . '/config.inc.php';
+    if (is_file($configPath)) {
+        Redirect::setConfigPath($configPath);
+    }
+
+    // Load global functions
+    require_once 'global.inc.php';
