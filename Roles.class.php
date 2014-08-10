@@ -51,15 +51,6 @@
         protected static $_role;
 
         /**
-         * _roles
-         * 
-         * @var    array
-         * @access protected
-         * @static
-         */
-        protected static $_roles;
-
-        /**
          * init
          * 
          * @access public
