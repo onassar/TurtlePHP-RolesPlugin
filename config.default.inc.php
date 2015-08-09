@@ -10,8 +10,9 @@
      * Config settings
      * 
      */
+    $role = $_SERVER['ROLE'];
     $config = array(
-        'role' => 'local'
+        'role' => $role
     );
 
     /**
